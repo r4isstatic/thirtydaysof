@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{category.name}}</h1>
+<div class="questions">
+	<h2>Questions</h2>
+	<ul>
+		{% for q in questions %}
+			<li>Day {{q.day}} - {{q.title}}</li>
+		{% endfor %}
+	</ul>
+</div>
+<div class="years">
+	<h2>Years</h2>
+	<ul>
+		{% for y in years %}
+			<li><a href="{{ url_for('yearchoices', categoryID=category.id, year=y)}}">{{y}}</a></li>
+		{% endfor %}
+	</ul>
+</div>
+{% endblock %}

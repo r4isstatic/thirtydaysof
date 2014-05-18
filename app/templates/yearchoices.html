@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>30 Days of... {{category.name}} - {{year}}</h1>
+<div class="choices">
+	<h2>Choices</h2>
+	<table>
+		<tr>
+			<th></th>
+			{% for q in questions %}
+				<th>{{q.title}}</th>
+			{% endfor %}
+		</tr>
+		{% for c in choices %}
+		<tr>
+			<td><a href="{{c.blogger_url}}">{{c.blogger_name}}</a></td>
+			<td><a href="{{c.url}}">{{c.title}}</a></td>
+		</tr>
+		{% endfor %}
+	</table>
+
+	<ul>
+		{% for c in choices %}
+			<li>{{c.question_title}} - {{c.title}} - {{c.blogger_name}}</li>
+		{% endfor %}
+	</ul>
+</div>
+{% endblock %}
