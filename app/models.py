@@ -4,7 +4,7 @@ class Blogger(db.Model):
 	id = db.Column(db.Integer, primary_key = True)
 	name = db.Column(db.String(200), index = True, unique = False)
 	url = db.Column(db.String(200), index = True, unique = False)
-	choices = db.relationship('Choice', backref = 'choice', lazy = 'dynamic')
+	choices = db.relationship('Choice', backref = 'b_choice', lazy = 'dynamic')
 
 	def __repr__(self):
 		return 'Blogger name %r>' % (self.name)
@@ -14,7 +14,7 @@ class Question(db.Model):
 	title = db.Column(db.String(300), index = True, unique = False)
 	day = db.Column(db.Integer, index = True, unique = False)
 	category_id = db.Column(db.Integer, db.ForeignKey('category.id'))
-	choices = db.relationship('Choice', backref = 'choice', lazy = 'dynamic')
+	choices = db.relationship('Choice', backref = 'q_choice', lazy = 'dynamic')
 
 	def __repr__(self):
 		return 'Question title %r>' % (self.title)
